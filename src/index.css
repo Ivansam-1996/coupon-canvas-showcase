@@ -17,24 +17,52 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 264 83% 57%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 264 83% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 264 83% 57%;
+
+    /* Coupon System Specific Colors */
+    --coupon-orange: 24 95% 53%;
+    --coupon-green: 142 76% 36%;
+    --coupon-blue: 221 83% 53%;
+    --coupon-purple: 264 83% 57%;
+    --coupon-red: 0 84% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 50%));
+    --gradient-warning: linear-gradient(135deg, hsl(var(--warning)), hsl(45 93% 58%));
+    --gradient-coupon: linear-gradient(135deg, hsl(var(--coupon-orange)), hsl(var(--coupon-red)));
+
+    /* Shadows */
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-elegant: 0 10px 25px -5px hsl(220 13% 91% / 0.3);
+    --shadow-coupon: 0 8px 25px -5px hsl(var(--coupon-orange) / 0.2);
 
     --radius: 0.5rem;
 
