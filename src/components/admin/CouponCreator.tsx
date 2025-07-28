@@ -63,7 +63,6 @@ export function CouponCreator({ couponData, setCouponData }: CouponCreatorProps)
           <div>
             <CardTitle className="flex items-center gap-2">
               Coupon Creator
-              <Badge variant="secondary" className="bg-success text-success-foreground">MVP</Badge>
             </CardTitle>
             <CardDescription className="text-primary-foreground/80">
               Design and configure your coupon campaigns

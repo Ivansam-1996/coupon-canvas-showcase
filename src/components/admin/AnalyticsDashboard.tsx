@@ -22,7 +22,6 @@ export function AnalyticsDashboard() {
         <CardTitle className="flex items-center gap-2">
           <BarChart3 className="h-5 w-5" />
           Analytics Dashboard
-          <Badge variant="secondary" className="bg-success text-success-foreground">MVP</Badge>
         </CardTitle>
         <CardDescription className="text-white/80">
           Real-time insights and performance metrics

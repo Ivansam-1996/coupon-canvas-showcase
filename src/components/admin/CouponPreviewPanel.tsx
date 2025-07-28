@@ -137,8 +137,8 @@ export function CouponPreviewPanel({ couponData }: CouponPreviewPanelProps) {
         <CardTitle className="flex items-center gap-2">
           <Eye className="h-5 w-5" />
           Live Coupon Preview
-          <Badge variant="secondary" className="bg-success text-success-foreground">MVP</Badge>
-          <Badge variant="secondary" className="bg-warning text-warning-foreground">DEMO</Badge>
+          {/* <Badge variant="secondary" className="bg-success text-success-foreground">MVP</Badge>
+          <Badge variant="secondary" className="bg-warning text-warning-foreground">DEMO</Badge> */}
         </CardTitle>
         <CardDescription className="text-primary-foreground/80">
           Real-time preview of your coupon design

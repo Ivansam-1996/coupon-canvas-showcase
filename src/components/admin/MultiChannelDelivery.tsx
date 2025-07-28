@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { Globe, Mail, Smartphone, QrCode, MessageSquare } from "lucide-react";
+import { Globe, Mail, Smartphone, QrCode, MessageSquare,MessageCircleMore } from "lucide-react";
 
 interface CouponData {
   channels: string[];
@@ -14,11 +14,11 @@ interface MultiChannelDeliveryProps {
 
 export function MultiChannelDelivery({ couponData, setCouponData }: MultiChannelDeliveryProps) {
   const channels = [
-    { id: "web", label: "Website", icon: Globe, desc: "Display on website banners and popups", color: "text-blue-500" },
-    { id: "email", label: "Email", icon: Mail, desc: "Send via email campaigns", color: "text-green-500" },
+    { id: "web", label: "Whatsapp", icon: MessageCircleMore, desc: "Send via whatsapp", color: "text-green-500" },
+    { id: "email", label: "Email", icon: Mail, desc: "Send via email ", color: "text-blue-500" },
     { id: "sms", label: "SMS", icon: Smartphone, desc: "Text message delivery", color: "text-purple-500" },
     { id: "qr", label: "QR Code", icon: QrCode, desc: "Generate QR codes for offline use", color: "text-orange-500" },
-    { id: "social", label: "Social Media", icon: MessageSquare, desc: "Share on social platforms", color: "text-pink-500" }
+    // { id: "social", label: "Social Media", icon: MessageSquare, desc: "Share on social platforms", color: "text-pink-500" }
   ];
 
   const toggleChannel = (channelId: string) => {

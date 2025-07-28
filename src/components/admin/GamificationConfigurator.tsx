@@ -59,8 +59,7 @@ export function GamificationConfigurator() {
         <CardTitle className="flex items-center gap-2">
           <Gamepad2 className="h-5 w-5" />
           Gamification Configurator
-          <Badge variant="secondary" className="bg-warning text-warning-foreground">NEW</Badge>
-          <Badge variant="secondary" className="bg-info text-info-foreground">USP</Badge>
+         
         </CardTitle>
         <CardDescription className="text-white/80">
           Create engaging game experiences for coupon distribution

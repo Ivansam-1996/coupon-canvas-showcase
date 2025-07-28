@@ -1,6 +1,20 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import {
+  Settings,
+  Calendar,
+  Zap,
+  Gamepad2,
+  Brain,
+  BarChart3,
+  Shield,
+  Globe,
+  FileText,
+  Eye,
+  UserCircle
+} from "lucide-react";
+
 import { CouponCreator } from "./admin/CouponCreator";
 import { SmartScheduler } from "./admin/SmartScheduler";
 import { MultiChannelDelivery } from "./admin/MultiChannelDelivery";
@@ -11,18 +25,6 @@ import { AuditLogs } from "./admin/AuditLogs";
 import { FraudSettings } from "./admin/FraudSettings";
 import { LocalizationPanel } from "./admin/LocalizationPanel";
 import { CouponPreviewPanel } from "./admin/CouponPreviewPanel";
-import { 
-  Settings, 
-  Calendar, 
-  Zap, 
-  Gamepad2, 
-  Brain, 
-  BarChart3, 
-  Shield,
-  Globe,
-  FileText,
-  Eye
-} from "lucide-react";
 
 interface CouponData {
   type: string;
@@ -60,115 +62,103 @@ export function AdminDashboard() {
   });
 
   const tabs = [
-    { id: "creator", label: "Coupon Creator", icon: Settings, badges: ["MVP"] },
-    { id: "scheduler", label: "Smart Scheduler", icon: Calendar, badges: ["NEW"] },
-    { id: "delivery", label: "Multi-Channel", icon: Zap, badges: ["USP"] },
-    { id: "gamification", label: "Gamification", icon: Gamepad2, badges: ["NEW", "USP"] },
-    { id: "ai-engine", label: "AI Engine", icon: Brain, badges: ["MVP", "USP"] },
-    { id: "analytics", label: "Analytics", icon: BarChart3, badges: ["MVP"] },
-    { id: "audit", label: "Audit Logs", icon: FileText, badges: [] },
-    { id: "fraud", label: "Fraud Settings", icon: Shield, badges: ["NEW"] },
-    { id: "localization", label: "Localization", icon: Globe, badges: ["USP"] },
-    { id: "preview", label: "Live Preview", icon: Eye, badges: ["MVP", "DEMO"] }
+    { id: "creator", label: "Coupon Creator", icon: Settings, },
+    // { id: "scheduler", label: "Smart Scheduler", icon: Calendar,},
+    { id: "delivery", label: "Multi-Channel", icon: Zap,},
+    { id: "gamification", label: "Gamification", icon: Gamepad2, },
+    { id: "ai-engine", label: "AI Engine", icon: Brain, },
+    { id: "analytics", label: "Analytics", icon: BarChart3},
+    { id: "audit", label: "Audit Logs", icon: FileText,},   
+      { id: "fraud", label: "Fraud Settings", icon: Shield, },
+    // { id: "localization", label: "Localization", icon: Globe, :  },
+    // { id: "preview", label: "Live Preview", icon: Eye, :  "DEMO"] }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
-      <div className="container mx-auto p-6">
+    <Tabs defaultValue="creator" className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside className="w-64 bg-[#000000] border border-gray-300 p-4 shadow-md flex flex-col">
+        {/* Top section: search + icons */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full text-sm px-3 py-1.5 border border-muted rounded-md"
+            />
+            <UserCircle className="w-5 h-5 text-muted-foreground" />
+            <Settings className="w-5 h-5 text-muted-foreground" />
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <TabsList className="flex flex-col gap-2 overflow-y-auto">
+          {tabs.map((tab) => (
+            <TabsTrigger
+              key={tab.id}
+              value={tab.id}
+              className="flex items-center justify-between px-3 py-2 rounded-md text-sm hover:bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all"
+            >
+              <div className="flex items-center gap-2">
+                <tab.icon className="h-4 w-4" />
+                <span>{tab.label}</span>
+              </div>
+              {/* {tab.badges.length > 0 && (
+                <div className="flex gap-1">
+                  {tab.badges.map((badge) => (
+                    <Badge
+                      key={badge}
+                      variant="secondary"
+                      className={`text-xs px-1 py-0 h-4 ${
+                        badge === "MVP" ? "bg-success text-success-foreground" :
+                        badge === "USP" ? "bg-warning text-warning-foreground" :
+                        badge === "NEW" ? "bg-info text-info-foreground" :
+                        "bg-primary text-primary-foreground"
+                      }`}
+                    >
+                      {badge}
+                    </Badge>
+                  ))}
+                </div>
+              )} */}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </aside>
+
+      {/* Main content */}
+      <main className="flex-1 overflow-y-auto p-6 bg-muted/20">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">
-            Coupon Management System
-          </h1>
+          <h1 className="text-4xl font-bold mb-2 text-foreground">Coupon Management System</h1>
           <p className="text-muted-foreground text-lg">
             Create, manage, and optimize your coupon campaigns with powerful AI-driven insights
           </p>
         </div>
 
-        <Tabs defaultValue="creator" className="w-full">
-          <TabsList className="grid grid-cols-5 lg:grid-cols-10 mb-8 bg-card shadow-elegant p-2">
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className="relative flex flex-col items-center gap-1 p-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-200"
-              >
-                <tab.icon className="h-4 w-4" />
-                <span className="text-xs font-medium hidden sm:block">{tab.label}</span>
-                {tab.badges.length > 0 && (
-                  <div className="absolute -top-1 -right-1 flex gap-1">
-                    {tab.badges.map((badge) => (
-                      <Badge
-                        key={badge}
-                        variant="secondary"
-                        className={`text-xs px-1 py-0 h-4 ${
-                          badge === "MVP" ? "bg-success text-success-foreground" :
-                          badge === "USP" ? "bg-warning text-warning-foreground" :
-                          badge === "NEW" ? "bg-info text-info-foreground" :
-                          "bg-primary text-primary-foreground"
-                        }`}
-                      >
-                        {badge}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        {/* Tab contents */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          {/* Main Content Area */}
+          <div className="xl:col-span-2 space-y-6">
+            <TabsContent value="creator"><CouponCreator couponData={couponData} setCouponData={setCouponData} /></TabsContent>
+            <TabsContent value="scheduler"><SmartScheduler /></TabsContent>
+            <TabsContent value="delivery"><MultiChannelDelivery couponData={couponData} setCouponData={setCouponData} /></TabsContent>
+            <TabsContent value="gamification"><GamificationConfigurator /></TabsContent>
+            <TabsContent value="ai-engine"><AICouponEngine /></TabsContent>
+            <TabsContent value="analytics"><AnalyticsDashboard /></TabsContent>
+            <TabsContent value="audit"><AuditLogs /></TabsContent>
+            <TabsContent value="fraud"><FraudSettings /></TabsContent>
+            <TabsContent value="localization"><LocalizationPanel couponData={couponData} setCouponData={setCouponData} /></TabsContent>
+            <TabsContent value="preview" className="xl:hidden"><CouponPreviewPanel couponData={couponData} /></TabsContent>
+          </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-            {/* Main Content Area - 2/3 width */}
-            <div className="xl:col-span-2">
-              <TabsContent value="creator" className="animate-fade-in">
-                <CouponCreator couponData={couponData} setCouponData={setCouponData} />
-              </TabsContent>
-
-              <TabsContent value="scheduler" className="animate-fade-in">
-                <SmartScheduler />
-              </TabsContent>
-
-              <TabsContent value="delivery" className="animate-fade-in">
-                <MultiChannelDelivery couponData={couponData} setCouponData={setCouponData} />
-              </TabsContent>
-
-              <TabsContent value="gamification" className="animate-fade-in">
-                <GamificationConfigurator />
-              </TabsContent>
-
-              <TabsContent value="ai-engine" className="animate-fade-in">
-                <AICouponEngine />
-              </TabsContent>
-
-              <TabsContent value="analytics" className="animate-fade-in">
-                <AnalyticsDashboard />
-              </TabsContent>
-
-              <TabsContent value="audit" className="animate-fade-in">
-                <AuditLogs />
-              </TabsContent>
-
-              <TabsContent value="fraud" className="animate-fade-in">
-                <FraudSettings />
-              </TabsContent>
-
-              <TabsContent value="localization" className="animate-fade-in">
-                <LocalizationPanel couponData={couponData} setCouponData={setCouponData} />
-              </TabsContent>
-
-              <TabsContent value="preview" className="animate-fade-in xl:hidden">
-                <CouponPreviewPanel couponData={couponData} />
-              </TabsContent>
-            </div>
-
-            {/* Live Preview Panel - 1/3 width, always visible on large screens */}
-            <div className="hidden xl:block">
-              <div className="sticky top-6">
-                <CouponPreviewPanel couponData={couponData} />
-              </div>
+          {/* Live Preview Panel */}
+          <div className="hidden xl:block">
+            <div className="sticky top-6">
+              <CouponPreviewPanel couponData={couponData} />
             </div>
           </div>
-        </Tabs>
-      </div>
-    </div>
+        </div>
+      </main>
+    </Tabs>
   );
 }
